@@ -25,7 +25,14 @@ This project uses two datasets:
    - Timestamp
    - Trade ID
 
-> **Note:** The raw datasets are not included in this repository due to file size limitations. Download them from the assignment links and place them locally before running the notebook.
+> **Note:**
+> 1) Bitcoin Market Sentiment (Fear/Greed)
+Columns: Date, Classification (Fear / Greed)
+Link: https://drive.google.com/file/d/1PgQC0tO8XN-wqkNyghWc_-mnrYv_nhSf/view?usp=sharing
+
+2) Historical Trader Data (Hyperliquid)
+Includes fields like: account, symbol, execution price, size, side, time, start position, event, closedPnL, leverage, etc.
+Link: https://drive.google.com/file/d/1IAfLZwu6rJzyWKgBToqwSmmVYU6VbjVs/view?usp=sharing
 
 ---
 
@@ -89,15 +96,26 @@ Implemented **K-Means Clustering** to group traders into behavioral segments bas
 
 ## Output Visualizations
 
-| Analysis | Output |
-|----------|--------|
-| Closed PnL | `outputs/pnl_boxplot.png` |
-| Win Rate | `outputs/win_rate.png` |
-| Trade Frequency | `outputs/trade_frequency.png` |
-| Trade Size | `outputs/trade_size.png` |
-| Long vs Short Ratio | `outputs/long_short_ratio.png` |
-| Correlation Heatmap | `outputs/heatmap.png` |
-| Trader Clustering | `outputs/trader_clusters.png` |
+### Closed PnL Analysis
+![Closed PnL](outputs/pnl_boxplot.png)
+
+### Win Rate Analysis
+![Win Rate](outputs/win_rate.png)
+
+### Trade Frequency Analysis
+![Trade Frequency](outputs/trade_frequency.png)
+
+### Trade Size Analysis
+![Trade Size](outputs/trade_size.png)
+
+### Long vs Short Analysis
+![Long vs Short](outputs/long_short_ratio.png)
+
+### Correlation Heatmap
+![Heatmap](outputs/heatmap.png)
+
+### Trader Clustering
+![Trader Clusters](outputs/trader_clusters.png)
 
 ---
 
