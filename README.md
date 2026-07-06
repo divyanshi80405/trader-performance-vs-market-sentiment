@@ -21,13 +21,6 @@ The analysis focuses on:
 
 The findings are then used to propose data-driven trading recommendations.
 
-## Repository Structure
-├── data/
-├── outputs/
-├── Trader_Sentiment_Analysis.ipynb
-├── README.md
-└── requirements.txt
-
 ## Dataset Description
 
 Two datasets were used in this project.
