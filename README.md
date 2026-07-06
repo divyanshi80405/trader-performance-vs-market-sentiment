@@ -76,10 +76,19 @@ The following analyses were performed:
 
 ## Part C – Strategy Recommendations
 
-Based on the analysis:
+### 1. Incorporate Market Sentiment into Risk Management
 
-- Use market sentiment as an additional **risk management indicator** when making trading decisions.
-- Prioritize **trade quality and disciplined position sizing** over simply increasing trading frequency.
+The analysis showed that traders achieved **higher average profitability and significantly better win rates during Fear periods** compared to Greed periods. While market sentiment alone should not determine trading decisions, it can serve as a valuable supporting indicator when managing risk.
+
+During Greed periods, traders may benefit from reducing position sizes, applying tighter stop-loss levels, and waiting for stronger technical confirmations before entering trades. Conversely, Fear periods may present opportunities for normal or slightly increased exposure when supported by additional market signals.
+
+---
+
+### 2. Focus on Trade Quality Rather Than Trade Quantity
+
+Trader segmentation revealed that **larger traders consistently achieved higher average win rates**, while frequent traders generated greater cumulative profits primarily because they executed more trades. This suggests that disciplined execution and effective position sizing may contribute more to consistent performance than simply increasing trading activity.
+
+Instead of maximizing the number of trades, traders should prioritize well-planned entries, disciplined risk management, and selective execution. Combining these practices with market sentiment analysis may lead to more sustainable long-term trading performance.
 
 ---
 
