@@ -2,267 +2,125 @@
 
 ## Overview
 
-This project investigates the relationship between Bitcoin market sentiment and trader behavior using historical trading data from Hyperliquid and the Bitcoin Fear & Greed Index.
-
-The objective is to determine whether market sentiment influences trader performance, trading behavior, and positioning, and to derive practical trading insights from the observed patterns.
-
-## Objective
-
-The primary objective of this analysis is to examine how Bitcoin market sentiment (Fear vs Greed) relates to trader performance and decision-making.
-
-The analysis focuses on:
-
-- Profitability
-- Win Rate
-- Trade Frequency
-- Position Bias
-- Trade Size
-- Trader Segmentation
-
-The findings are then used to propose data-driven trading recommendations.
-
-## Dataset Description
-
-Two datasets were used in this project.
-
-### 1. Bitcoin Fear & Greed Index
-
-Contains:
-
-- Date
-- Market Sentiment Classification (Fear / Greed)
+This project analyzes the relationship between **Bitcoin market sentiment (Fear & Greed Index)** and **Hyperliquid trader performance**. The objective is to understand how market sentiment influences trading behavior, profitability, and decision-making, and to derive actionable trading insights.
 
 ---
 
-### 2. Hyperliquid Historical Trading Data
+## Dataset
 
-Contains:
+This project uses two datasets:
 
-- Account
-- Coin
-- Execution Price
-- Trade Size
-- Position Direction
-- Closed Profit & Loss
-- Trading Fees
-- Timestamp
-- Trade ID
-- Start Position
+1. **Bitcoin Fear & Greed Index**
+   - Date
+   - Market Sentiment Classification (Fear, Greed, etc.)
 
-The datasets were merged using the trading date.
+2. **Hyperliquid Historical Trader Data**
+   - Account
+   - Coin
+   - Execution Price
+   - Trade Size
+   - Direction
+   - Closed PnL
+   - Fees
+   - Timestamp
+   - Trade ID
 
-## Methodology
+> **Note:** The raw datasets are not included in this repository due to file size limitations. Download them from the assignment links and place them locally before running the notebook.
 
-### Part A – Data Preparation
+---
 
-#### Data Loading
-Both datasets were loaded into pandas DataFrames for preprocessing and analysis.
+# Methodology
 
-### Data Inspection
+## Part A – Data Preparation
 
-Initial exploration included:
+- Loaded both datasets using Pandas.
+- Inspected dataset dimensions, data types, missing values, and duplicates.
+- Converted timestamps into datetime format.
+- Aligned trader data with the Fear & Greed Index using the trading date.
+- Created analytical features including:
+  - Win indicator
+  - Daily trade count
+  - Trade size
+  - Long vs Short positions
+  - Trader frequency and trader size segments
 
-- Dataset dimensions
-- Data types
-- Missing values
-- Duplicate records
+---
 
-### Data Cleaning
+## Part B – Exploratory Data Analysis
 
-The preprocessing stage involved:
+The following analyses were performed:
 
-- Identifying missing values
-- Checking duplicate entries
-- Standardizing timestamps
-- Handling unmatched records after merging
+- Profitability (Closed PnL) by market sentiment
+- Win Rate comparison
+- Trade Frequency analysis
+- Trade Size analysis
+- Long vs Short position analysis
+- Trader Segmentation
+- Correlation Analysis
 
-### Timestamp Processing
+### Key Insights
 
-Trading timestamps were converted into datetime format and normalized to daily granularity to match the Fear & Greed Index.
+- Traders achieved **higher average profitability** during Fear periods than Greed periods.
+- **Win rates were significantly higher** during Fear periods.
+- Traders showed a **Long bias during Fear** and a **Short bias during Greed**.
+- Larger traders generally achieved **higher average win rates** than smaller traders.
 
-### Dataset Alignment
+---
 
-Both datasets were merged using the Date column to associate every trade with the corresponding market sentiment.
+## Part C – Strategy Recommendations
 
-### Feature Engineering
+Based on the analysis:
 
-Several analytical features were created, including:
+- Use market sentiment as an additional **risk management indicator** when making trading decisions.
+- Prioritize **trade quality and disciplined position sizing** over simply increasing trading frequency.
 
-- Win Indicator
-- Daily Trade Count
-- Daily Profit & Loss
-- Average Trade Size
-- Long vs Short Position Type
-- Trader Frequency
-- Trader Size Categories
+---
 
-### Part B – Exploratory Data Analysis
+## Bonus
 
-### 1. Profitability Analysis
-
-Compared trader profitability during Fear and Greed periods using:
-
-- Average Closed PnL
-- Median PnL
-- Distribution of profits
-
-### 2. Win Rate Analysis
-
-Calculated the percentage of profitable trades for each market sentiment category.
-
-### 3. Trade Frequency Analysis
-
-Measured trading activity under different market conditions by comparing trade counts across Fear and Greed periods.
-
-### 4. Trade Size Analysis
-
-Compared average trade sizes across different market sentiment conditions.
-
-### 5. Long vs Short Position Analysis
-
-Analyzed trader positioning by comparing Long and Short opening positions under Fear and Greed market conditions.
-
-### 6. Trader Segmentation
-
-Traders were segmented based on:
+Implemented **K-Means Clustering** to group traders into behavioral segments based on:
 
 - Trading Frequency
 - Average Trade Size
-
-Performance metrics such as Total PnL and Win Rate were compared across segments.
-
-### 7. Correlation Analysis
-
-Correlation analysis was performed to understand relationships between:
-
-- Closed PnL
-- Trade Size
-- Trading Fee
-- Starting Position
-
-#### Key Insights
-
----
-
-# Part C – Actionable Strategy Recommendations
-
-Based on the exploratory data analysis and trader segmentation, the following strategy recommendations are proposed.
-
-## Strategy Recommendation 1: Use Market Sentiment as a Risk Management Signal
-
-### Recommendation
-
-The analysis shows that trader performance was stronger during **Fear** periods, with:
-
-- **Higher Average Closed PnL:** 109.34 (Fear) vs. 87.34 (Greed)
-- **Higher Win Rate:** 40.91% (Fear) vs. 14.06% (Greed)
-
-Based on these observations, traders can use market sentiment as an additional risk management indicator. During **Fear** periods, traders may consider maintaining normal exposure or selectively increasing participation when supported by other technical or fundamental signals. During **Greed** periods, traders may benefit from reducing position sizes, tightening stop-loss levels, and waiting for stronger trade confirmations before entering new positions.
-
-### Rationale
-
-Market sentiment should not be used as the sole decision-making factor. However, integrating sentiment indicators with existing trading strategies may improve risk-adjusted performance and help manage downside risk during less favorable market conditions.
-
----
-
-## Strategy Recommendation 2: Prioritize Trade Quality Over Trade Quantity
-
-### Recommendation
-
-Trader segmentation revealed that:
-
-- **Larger traders achieved higher average win rates.**
-- **Frequent traders generated higher cumulative profits**, primarily because of increased trading activity.
-
-Rather than simply increasing trading frequency, traders should focus on improving trade quality through disciplined position sizing, better entry and exit timing, and consistent risk management. Executing fewer, higher-conviction trades may provide more sustainable long-term profitability than increasing the number of trades without a clear strategy.
-
-### Rationale
-
-The findings suggest that disciplined execution and effective capital allocation have a greater impact on long-term performance than trading volume alone. Emphasizing quality over quantity may help traders achieve more consistent results across different market conditions.
-
----
-
-# Conclusion
-
-This project analyzed the relationship between Bitcoin market sentiment and trader behavior using the Bitcoin Fear & Greed Index and Hyperliquid historical trading data.
-
-The analysis found clear associations between market sentiment and trader performance. Fear periods were associated with higher average profitability, higher win rates, and a stronger preference for opening Long positions. In contrast, Greed periods showed lower win rates and a stronger Short bias.
-
-Trader segmentation further indicated that larger traders generally achieved higher average win rates, while frequent traders accumulated greater overall profits through increased trading activity.
-
-Overall, the results demonstrate that combining market sentiment with behavioral trading metrics can provide valuable insights for developing data-driven trading strategies and improving risk management. Future work could extend this analysis through predictive modeling, advanced behavioral clustering, and interactive dashboards for real-time market analysis.
-
----
-
-## Bonus – Trader Clustering
-
-K-Means clustering was applied to group traders into behavioral archetypes using:
-
-- Trade Frequency
-- Average Trade Size
-- Total Profitability
+- Total Closed PnL
 - Win Rate
 
-This provides an unsupervised behavioral segmentation that can support personalized trading strategies and further predictive analysis.
+---
 
-#### Trader Clustering using K-Means
+## Output Visualizations
+
+| Analysis | Output |
+|----------|--------|
+| Closed PnL | `outputs/pnl_boxplot.png` |
+| Win Rate | `outputs/win_rate.png` |
+| Trade Frequency | `outputs/trade_frequency.png` |
+| Trade Size | `outputs/trade_size.png` |
+| Long vs Short Ratio | `outputs/long_short_ratio.png` |
+| Correlation Heatmap | `outputs/heatmap.png` |
+| Trader Clustering | `outputs/trader_clusters.png` |
 
 ---
 
-## Results
+## Libraries Used
 
-The analysis demonstrates that trader behavior varies across different market sentiment conditions.
-
-Key findings include:
-
-- Higher average profitability during Fear periods
-- Higher win rates during Fear periods
-- Long-biased positioning during Fear
-- Stronger Short positioning during Greed
-- Larger traders achieved higher average win rates
-
----
-## Future Improvements
-
-Potential extensions include:
-
-- Predictive modeling for trader profitability
-- Time-series forecasting
-- Advanced trader clustering
-- Interactive Streamlit dashboard
-- Risk-adjusted performance metrics
-
-# Libraries Used
-
-The project was implemented using the following Python libraries:
-
-| Library | Purpose |
-|----------|---------|
-| pandas | Data loading, cleaning, manipulation, and aggregation |
-| numpy | Numerical computations and feature engineering |
-| matplotlib | Data visualization |
-| seaborn | Statistical plots and exploratory data analysis |
-| scikit-learn | Trader clustering using K-Means and feature scaling |
-| Jupyter Notebook | Interactive analysis and documentation |
+- pandas
+- numpy
+- matplotlib
+- seaborn
+- scikit-learn
+- jupyter
 
 ---
 
-# Installation
+## Installation
 
-## 1. Clone the Repository
+Clone the repository:
 
 ```bash
-git clone https://github.com/<your-username>/primetrade-trader-sentiment-analysis.git
-cd primetrade-trader-sentiment-analysis
+git clone https://github.com/divyanshi80405/trader-performance-vs-market-sentiment.git
 ```
 
-## 2. Install Dependencies
-
-```bash
-pip install pandas numpy matplotlib seaborn scikit-learn jupyter
-```
-
-Alternatively, if a `requirements.txt` file is included:
+Install dependencies:
 
 ```bash
 pip install -r requirements.txt
@@ -270,56 +128,23 @@ pip install -r requirements.txt
 
 ---
 
-# How to Run
+## How to Run
 
-1. Clone or download this repository.
-
-2. Ensure the following files are present inside the `data/` folder:
-   - `historical_data.csv`
-   - `fear_greed_index.csv`
-
-3. Launch Jupyter Notebook:
+1. Download the datasets from the assignment links.
+2. Place the datasets in your local project directory (or update the file paths in the notebook if needed).
+3. Open the notebook:
 
 ```bash
-jupyter notebook
+jupyter notebook Trader_Sentiment_Analysis.ipynb
 ```
 
-4. Open:
-
-```
-Trader_Sentiment_Analysis.ipynb
-```
-
-5. Run all notebook cells sequentially from top to bottom.
-
-6. The notebook will:
-   - Load and preprocess both datasets
-   - Merge trader and sentiment data
-   - Perform exploratory data analysis
-   - Generate visualizations
-   - Segment traders based on trading behavior
-   - Apply K-Means clustering (Bonus)
-   - Present insights and strategy recommendations
-
-7. Output visualizations can be saved in the `outputs/` directory for future reference.
+4. Run all cells from top to bottom.
 
 ---
 
-# Requirements
-
-- Python 3.9 or later
-- Jupyter Notebook
-- Internet connection is **not required** after downloading the datasets.
-
----
-
-# Author
-
-**Divyanshi Negi**
-
-Data Science & AI Enthusiast
-
-GitHub: https://github.com/divyanshi80405
-
-LinkedIn: https://www.linkedin.com/in/divyanshi-negi/
 ## Future Improvements
+
+- Predictive modeling for trader profitability
+- Interactive Streamlit dashboard
+- Advanced behavioral clustering
+- Time-series forecasting of trading performance
